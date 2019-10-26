@@ -1,0 +1,22 @@
+on property:vendor.fingerprint.boot=udfp_syna_fs9501
+    setprop persist.vivo.fingerprint.front true
+    chown system system /dev/vfsspi
+    chmod 0770 /dev/vfsspi
+    enable biometrics-fingerprint-fs9501
+
+on post-fs-data && property:vendor.fingerprint.boot=udfp_syna_fs9501
+    mkdir /data/vendor/fingerprint/fs9501  0771 system system
+    mkdir /data/vendor/fingerprint/fs9501/ist  0771 system system
+
+service biometrics-fingerprint-fs9501 /vendor/bin/hw/vendor.vivo.hardware.biometrics.fingerprint@2.1-service-fs9501
+    class late_start
+    user system
+    group input system
+    onrestart restart fs9501-restart-counter-sh
+    disabled
+
+service fs9501-restart-counter-sh /system/vendor/bin/sh /vendor/bin/init.vivo.fingerprint_restart_counter.sh biometrics-fingerprint-fs9501 5
+    user system
+    group system
+    disabled
+    oneshot

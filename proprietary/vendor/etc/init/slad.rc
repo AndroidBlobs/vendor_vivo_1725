@@ -1,0 +1,13 @@
+service slad /vendor/bin/slad
+    class main
+    socket slad stream 0666 root system
+    disabled
+
+on property:sys.sla.enabled=1
+    start slad
+on property:sys.sla.enabled=0
+    stop slad
+
+on post-fs-data
+    chmod 0771 /data/sla
+    chmod 777 /data/sla/slad.conf

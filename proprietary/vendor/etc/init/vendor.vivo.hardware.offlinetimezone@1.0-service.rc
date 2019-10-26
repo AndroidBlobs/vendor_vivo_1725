@@ -1,0 +1,10 @@
+service vivo-offlinetimezone-hal-1-0 /vendor/bin/hw/vendor.vivo.hardware.offlinetimezone@1.0-service
+	class hal
+	user system
+	group system
+
+
+on post-fs-data
+	chmod 777 /data/offlinetz
+	chmod 777 /data/offlinetz/lastcombinedTimezone.bin
+	chmod 777 /data/offlinetz/lastcombinedTimezonebackup.bin

@@ -1,0 +1,3 @@
+on fs
+    chown system system /dev/goodix_fp
+	chmod 0644 /dev/goodix_fp

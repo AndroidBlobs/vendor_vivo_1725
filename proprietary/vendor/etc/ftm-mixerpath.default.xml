@@ -1,0 +1,321 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--
+    *HiFi :        AK4376 connected to tert mi2s
+    *Speaker :     TFA9891 connected to sec mi2s
+-->
+<mixer>
+    <!-- These are the initial mixer settings -->
+    <!-- Note that here can only include kcontrols used in this file -->
+    <ctl name="MultiMedia2 Mixer INT3_MI2S_TX" value="0" />
+    <ctl name="INT0_MI2S_RX Audio Mixer MultiMedia2" value="0" />
+    <ctl name="SEC_MI2S_RX Audio Mixer MultiMedia2" value="0" />
+    <ctl name="TERT_MI2S_RX Audio Mixer MultiMedia2" value="0" />
+    <ctl name="INT0_MI2S_RX Port Mixer INT3_MI2S_TX" value="0" />
+    <ctl name="SEC_MI2S_RX Port Mixer INT3_MI2S_TX" value="0" />
+    <ctl name="TERT_MI2S_RX Port Mixer INT3_MI2S_TX" value="0" />
+
+    <ctl name="DEC1 MUX" value="ZERO" />
+    <ctl name="DEC2 MUX" value="ZERO" />
+    <ctl name="ADC2 MUX" value="ZERO" />
+    <ctl name="ADC1 Volume" value="0" />
+    <ctl name="ADC2 Volume" value="0" />
+    <ctl name="ADC3 Volume" value="0" />
+    <ctl name="DEC1 Volume" value="84" />
+    <ctl name="DEC2 Volume" value="84" />
+	<ctl name="ADC1_INP1 Switch" value="0" />
+    <ctl name="INT0_MI2S_RX Channels" value="One" />
+	<ctl name="INT3_MI2S_TX Channels" value="One" />
+    <ctl name="RX1 MIX1 INP1" value="ZERO" />
+    <ctl name="EAR_S" value="ZERO" />
+    <ctl name="EAR PA Gain" value="POS_1P5_DB" />
+    <ctl name="RX1 Digital Volume" value="84" />
+    <ctl name="EAR PA Boost" value="DISABLE" />
+    <ctl name="Speaker Boost" value="DISABLE" />
+    <ctl name="Ext Spk Boost" value="DISABLE" />
+    <ctl name="Boost Option" value="BOOST_SWITCH" />
+
+    <ctl name="mono Profile" value="MUSIC_48000" />
+    <ctl name="mono MUSIC_48000 Playback Volume" value="0" />
+    <ctl name="mono VOICE_48000 Playback Volume" value="0" />
+    <ctl name="HiFi Mode Switch" value="Off" />
+    <ctl name="Headphone Rx Mixer I2S_RX" value="0" />
+    <ctl name="SEC_MI2S Mode" value="Master-Fixed" />
+    <ctl name="TERT_MI2S Mode" value="Master-Fixed" />
+	<ctl name="SEC_MI2S_RX Channels" value="Two" />
+	<ctl name="TERT_MI2S_RX Channels" value="Two" />
+
+    <!-- These are audio route (FE to BE) specific mixer settings -->
+    <path name="record">
+        <ctl name="MultiMedia2 Mixer INT3_MI2S_TX" value="1" />
+    </path>
+
+    <path name="playback">
+        <ctl name="INT0_MI2S_RX Audio Mixer MultiMedia2" value="1" />
+    </path>
+
+    <path name="playback-speaker">
+        <ctl name="SEC_MI2S_RX Audio Mixer MultiMedia2" value="1" />
+    </path>
+
+    <path name="playback-headphone">
+        <ctl name="TERT_MI2S_RX Audio Mixer MultiMedia2" value="1" />
+    </path>
+
+    <path name="playback-headphone-hifi">
+        <ctl name="TERT_MI2S_RX Audio Mixer MultiMedia2" value="1" />
+    </path>
+
+    <path name="afe-loopback">
+        <ctl name="INT0_MI2S_RX Port Mixer INT3_MI2S_TX" value="1" />
+    </path>
+
+    <path name="afe-loopback-speaker">
+        <ctl name="SEC_MI2S_RX Port Mixer INT3_MI2S_TX" value="1" />
+    </path>
+
+    <path name="afe-loopback-headphone">
+        <ctl name="TERT_MI2S_RX Port Mixer INT3_MI2S_TX" value="1" />
+    </path>
+
+    <path name="afe-loopback-headphone-hifi">
+        <ctl name="TERT_MI2S_RX Port Mixer INT3_MI2S_TX" value="1" />
+    </path>
+
+    <path name="adc1">
+		<ctl name="ADC1_INP1 Switch" value="1" />
+        <ctl name="DEC1 MUX" value="ADC1" />
+        <ctl name="ADC1 Volume" value="4" />
+    </path>
+
+    <path name="adc2">
+        <ctl name="DEC1 MUX" value="ADC2" />
+        <ctl name="ADC2 MUX" value="INP2" />
+        <ctl name="ADC2 Volume" value="4" />
+    </path>
+
+    <path name="adc3">
+        <ctl name="ADC3 Volume" value="6" />
+        <ctl name="DEC1 MUX" value="ADC2" />
+        <ctl name="ADC2 MUX" value="INP3" />
+    </path>
+
+    <path name="handset-mic">
+	    <ctl name="INT3_MI2S_TX Channels" value="One" />
+        <path name="adc1" />
+    </path>
+
+    <path name="headset-mic">
+	    <ctl name="INT3_MI2S_TX Channels" value="One" />
+        <path name="adc2" />
+    </path>
+
+    <path name="sub-mic">
+	    <ctl name="INT3_MI2S_TX Channels" value="One" />
+        <path name="adc3" />
+    </path>
+
+    <path name="double-mic">
+	    <ctl name="INT3_MI2S_TX Channels" value="Two" />
+        <ctl name="DEC1 MUX" value="ADC2" />
+        <ctl name="ADC1 Volume" value="6" />
+        <ctl name="ADC3 Volume" value="6" />
+        <ctl name="DEC2 MUX" value="ADC1" />
+        <ctl name="ADC2 MUX" value="INP3" />
+		<ctl name="ADC1_INP1 Switch" value="1" />
+    </path>
+
+    <path name="headphones">
+        <ctl name="HiFi Mode Switch" value="Normal" />
+        <ctl name="Headphone Rx Mixer I2S_RX" value="1" />
+        <ctl name="TERT_MI2S Mode" value="Master-Fixed" />
+    </path>
+
+    <path name="headphone-hifi">
+        <ctl name="HiFi Mode Switch" value="HiFi" />
+        <ctl name="TERT_MI2S Mode" value="Undefine" />
+        <ctl name="Headphone Rx Mixer I2S_RX" value="1" />
+    </path>
+
+    <path name="handset">
+        <ctl name="INT0_MI2S_RX Channels" value="One" />
+        <ctl name="RX1 MIX1 INP1" value="RX1" />
+        <ctl name="EAR_S" value="Switch" />
+        <ctl name="EAR PA Gain" value="POS_6_DB" />
+        <ctl name="RX1 Digital Volume" value="84" />
+    </path>
+
+    <path name="speaker">
+        <ctl name="mono Profile" value="MUSIC_48000" />
+        <ctl name="SEC_MI2S Mode" value="Master-Fixed" />
+    </path>
+
+    <path name="hphl">
+        <path name="headphones" />
+    </path>
+
+    <path name="hphr">
+        <path name="headphones" />
+    </path>
+
+    <path name="tc-handset-rcv-afe">
+        <path name="handset-mic" />
+        <path name="record" />
+        <path name="handset" />
+        <path name="playback" />
+        <path name="afe-loopback"/>
+    </path>
+
+    <path name="tc-submic-hp-afe">
+        <path name="sub-mic" />
+        <path name="record" />
+        <path name="headphones" />
+        <path name="playback-headphone" />
+        <path name="afe-loopback-headphone"/>
+    </path>
+
+    <path name="tc-dmic-hp-afe">
+        <path name="double-mic" />
+        <path name="record" />
+        <path name="headphones" />
+        <path name="playback-headphone" />
+        <path name="afe-loopback-headphone"/>
+    </path>
+
+    <path name="tc-handset-hp-afe">
+        <path name="handset-mic" />
+        <path name="record" />
+        <path name="headphones" />
+        <path name="playback-headphone" />
+        <path name="afe-loopback-headphone"/>
+    </path>
+
+    <path name="tc-headset-rcv-afe">
+        <path name="headset-mic" />
+        <path name="record" />
+        <path name="handset" />
+        <path name="playback" />
+        <path name="afe-loopback"/>
+    </path>
+
+    <path name="tc-headset-spk-afe">
+        <path name="headset-mic" />
+        <path name="record" />
+        <path name="speaker" />
+        <path name="playback-speaker" />
+        <path name="afe-loopback-speaker" />
+    </path>
+
+    <path name="tc-headset-hifi-afe">
+        <path name="headset-mic" />
+        <path name="record" />
+        <path name="headphone-hifi" />
+        <path name="playback-headphone-hifi" />
+        <path name="afe-loopback-headphone-hifi" />
+    </path>
+
+    <path name="tc-playback-speaker">
+        <path name="speaker" />
+        <path name="playback-speaker" />
+    </path>
+
+    <path name="tc-playback-hifi">
+        <path name="headphone-hifi" />
+        <path name="playback-headphone-hifi" />
+    </path>
+
+    <path name="tc-playback-hifi-speaker">
+        <path name="speaker" />
+        <path name="playback-speaker" />
+        <path name="headphone-hifi" />
+        <path name="playback-headphone-hifi" />
+    </path>
+
+    <!-- ADSP Does not support 2 afe loopback instance on the same src port -->
+    <path name="tc-headset-hifi-spk-afe">
+        <path name="headset-mic" />
+        <path name="record" />
+        <path name="speaker" />
+        <path name="playback-speaker" />
+        <path name="headphone-hifi" />
+        <path name="playback-headphone-hifi" />
+        <path name="afe-loopback-headphone-hifi" />
+        <path name="afe-loopback-speaker" />
+    </path>
+
+    <path name="tc-handset-hphr-afe">
+        <path name="handset-mic" />
+        <path name="record" />
+        <path name="hphr" />
+        <path name="playback-headphone" />
+        <path name="afe-loopback-headphone" />
+    </path>
+
+    <path name="tc-submic-hphl-afe">
+        <path name="sub-mic" />
+        <path name="record" />
+        <path name="hphl" />
+        <path name="playback-headphone" />
+        <path name="afe-loopback-headphone" />
+    </path>
+
+    <path name="tc-playback-rcv">
+        <path name="handset" />
+        <path name="playback" />
+    </path>
+
+    <path name="tc-ktv-headset-mic-afe">
+        <path name="headset-mic" />
+        <path name="record" />
+        <path name="speaker" />
+        <path name="playback-speaker" />
+        <path name="afe-loopback-speaker" />
+    </path>
+
+    <path name="tc-ktv-handset-mic-afe">
+        <path name="handset-mic" />
+        <path name="audio-record" />
+        <path name="headphones" />
+        <path name="playback-headphone" />
+        <path name="afe-loopback-headphone"/>
+    </path>
+
+    <path name="tc-handset-rcv-vol">
+        <ctl name="DEC1 Volume" value="84" />
+    </path>
+
+    <path name="tc-dmic-hp-vol">
+        <ctl name="DEC1 Volume" value="84" />
+        <ctl name="DEC2 Volume" value="84" />
+    </path>
+
+    <path name="tc-submic-hp-vol">
+        <ctl name="DEC1 Volume" value="84" />
+    </path>
+
+    <path name="tc-handset-hp-vol">
+        <ctl name="DEC1 Volume" value="84" />
+    </path>
+
+    <path name="tc-headset-rcv-vol">
+        <ctl name="DEC1 Volume" value="84" />
+    </path>
+
+    <path name="tc-headset-spk-vol">
+        <ctl name="DEC1 Volume" value="84" />
+    </path>
+
+    <path name="tc-headset-hifi-vol">
+    </path>
+
+    <path name="tc-handset-hphr-vol">
+        <ctl name="DEC1 Volume" value="84" />
+    </path>
+
+    <path name="tc-submic-hphl-vol">
+        <ctl name="DEC1 Volume" value="84" />
+    </path>
+
+    <config name="loopback-rx-pcm" value="1" />
+    <config name="loopback-tx-pcm" value="1" />
+    <config name="speaker-rx-acdb-id" value="15" />
+</mixer>
